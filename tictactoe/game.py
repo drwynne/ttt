@@ -1,9 +1,6 @@
 # coding=utf-8
 from __future__ import print_function
-from board import GameBoard
-
-import random
-
+from .board import GameBoard
 
 
 class Game(object):
@@ -46,8 +43,8 @@ class Game(object):
                 board.cells[0][0] + board.cells[1][0] + board.cells[2][0],  # c1
                 board.cells[0][1] + board.cells[1][1] + board.cells[2][1],  # c2
                 board.cells[0][2] + board.cells[1][2] + board.cells[2][2],  # c3
-                board.cells[0][0] + board.cells[1][1] + board.cells[2][2],  # diag 1
-                board.cells[0][2] + board.cells[1][1] + board.cells[2][0]  # diag 2
+                board.cells[0][0] + board.cells[1][1] + board.cells[2][2],  # d1
+                board.cells[0][2] + board.cells[1][1] + board.cells[2][0]  # d2
             ]
 
             if 3 in sums:

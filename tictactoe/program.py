@@ -1,7 +1,7 @@
 # coding=utf-8
 from __future__ import print_function
 
-from game import Game
+from .game import Game
 import os
 import random
 

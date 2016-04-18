@@ -22,5 +22,6 @@ class GameBoard(object):
                     self.O: 'O',
                     self.empty: '.'}
 
-        text = '-----\n'.join(['{}\n'.format('|'.join([str_dict[j] for j in i])) for i in self.cells])
+        text = '-----\n'.join(['{}\n'.format(
+            '|'.join([str_dict[j] for j in i])) for i in self.cells])
         print(text)
