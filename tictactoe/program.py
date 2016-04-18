@@ -39,9 +39,15 @@ class Program(object):
                     board.show()
                     continue
 
-            else:
+            elif self.game_play == 'dumb':
                 row, col = random.choice(game.get_available_moves)
-                print('{} plays: {},{}'.format(game.current_player_name, row, col))
+                print('{} plays: {},{}'.format(game.current_player_name,
+                                               row, col))
+
+            elif self.game_play == 'ai':
+                # TODO: implement
+                raise NotImplementedError('Smart AI not implemented yet')
+
 
             game.play_cell(row, col)
             board.show()
