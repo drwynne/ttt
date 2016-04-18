@@ -3,6 +3,7 @@ from __future__ import print_function
 
 from game import Game
 import os
+import random
 
 try:
     input = raw_input
@@ -11,8 +12,12 @@ except NameError:
 
 
 class Program(object):
-    def __init__(self):
+    def __init__(self, game_play='two_player'):
         self.game = Game()
+        if game_play not in ['two_player', 'dumb', 'ai']:
+            raise ValueError
+        self.game_play = game_play
+
 
     def run(self):
         game = self.game
@@ -23,26 +28,28 @@ class Program(object):
         print('Welcome to Tic-Tac-Toe\n{}'.format('=' * 22))
 
         while not game.has_winner:
-            print("""It's {0}'s turn.""".format(game.current_player_name))
+            print("""It's {}'s turn.""".format(game.current_player_name))
 
-            # Get position from player
-            row, col = self.get_position()
+            if self.game_play == 'two_player' or game.active_player == game.X:
+                row, col = self.get_position()
+            
+                # Validate position is not already taken
+                if game.cell_already_played(row, col):
+                    print('Try again. That position is occupied')
+                    board.show()
+                    continue
 
-            # Validate position is not already taken
-            if game.cell_already_played(row, col):
-                print('Try again. That position is occupied')
-                print(board, end='\n')
-                continue
+            else:
+                row, col = random.choice(game.get_available_moves)
+                print('{} plays: {},{}'.format(game.current_player_name, row, col))
 
-            # Use cell
             game.play_cell(row, col)
-
-            print(board)
+            board.show()
 
             game.switch_players()
 
         print('Winner is {}!'.format(game.find_winner()))
-        print(board)
+        board.show()
 
 
     def get_position(self):

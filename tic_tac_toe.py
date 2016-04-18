@@ -2,7 +2,8 @@ import tictactoe
 
 
 def main():
-    program = tictactoe.Program()
+    #program = tictactoe.Program()
+    program = tictactoe.Program(game_play='dumb')
     program.run()
 
 

@@ -2,6 +2,9 @@
 from __future__ import print_function
 from board import GameBoard
 
+import random
+
+
 
 class Game(object):
     def __init__(self):
@@ -24,6 +27,13 @@ class Game(object):
             return "No winner"
 
         return 'X' if self.find_winner() == self.X else 'O'
+
+    @property
+    def get_available_moves(self):
+        import numpy as np
+        
+        moves = np.argwhere(np.array(self.board.cells)==0).tolist()
+        return moves
 
     def find_winner(self):
         board = self.board

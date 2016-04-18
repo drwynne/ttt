@@ -17,14 +17,10 @@ class GameBoard(object):
         ]
         return cells
 
-    def print_board(self):
+    def show(self):
         str_dict = {self.X: 'X',
                     self.O: 'O',
                     self.empty: '.'}
 
         text = '-----\n'.join(['{}\n'.format('|'.join([str_dict[j] for j in i])) for i in self.cells])
-
-        return text
-
-    def __str__(self):
-        return self.print_board()
+        print(text)
